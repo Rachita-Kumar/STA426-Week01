@@ -1,0 +1,43 @@
+---
+title: "Week 01 Exercise Part B.3"
+author: "Rachita Kumar"
+format: html
+editor: visual
+---
+## Sampling from a negative binomial distribution
+### Set a seed
+```{r}
+set.seed(1)
+```
+
+### Sampling
+* The ```rnbinom``` function can be used to generate the sample from a negative binomial distribution
+* The parameters given are:
+  + number of values (```n```) = $100$
+  + mean (```mu```) = $10$
+  + dispersion = $2$ (```size = 1/2```)
+  + variance = $mu+mu^2*dispersion$
+
+If the sample is denoted as ```sample_nb```
+```{r}
+sample_nb <- rnbinom(n = 100, size = 1/2, mu = 10)
+```
+
+### Plotting a histogram in linear scale
+The ```hist``` function can be implemented in order to get a histogram of the sample.
+```{r}
+hist(sample_nb)
+```
+
+### Plotting a histogram in log scale
+The ```hist``` function can be implemented in order to get a histogram of the sample, as mentioned above. Here, $1$ is added to each element before converting to $log$ scale in order to account for an element being $0$.
+
+```{r}
+hist(log(sample_nb + 1))
+```
+
+### Calculating the mean and variance of the sample
+The ```mean``` and ```var``` functions can be used for this purpose.
+
+The mean of the sample is `r mean(sample_nb)`.  
+The variance of the sample is `r var(sample_nb)`
